@@ -7,7 +7,9 @@ Run `dotnet ef database update --project JobSagaRunner` to create the job sagas 
 Run the following in 3 different terminals:
 
 `dotnet run --project JobSagaRunner`
+
 `dotnet run --project JobConsumer --launch-profile "JobConsumer BlueTenant"`
+
 `dotnet run --project JobConsumer --launch-profile "JobConsumer RedTenant"`
 
 Each JobConsumer submits a recurring job to run every 10 seconds, however only one of the JobConsumer instances actually processes jobs, and the `ServiceAddress` column in `job_saga` shows the same address for both tenants' jobs.
